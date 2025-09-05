@@ -1,0 +1,30 @@
+<div class="login-container">
+    <div class="login-card">
+      <h2>Login Admin</h2>
+  
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" formControlName="email" placeholder="Digite seu email">
+            <div class="error" *ngIf="submitted && f.email.errors">
+              <span *ngIf="f.email.errors?.['required']">Email é obrigatório</span>
+              <span *ngIf="f.email.errors?.['email']">Email inválido</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Senha</label>
+            <input type="password" formControlName="password" placeholder="Digite sua senha">
+            <div class="error" *ngIf="submitted && f.password.errors">
+              <span *ngIf="f.password.errors?.['required']">Senha é obrigatória</span>
+              <span *ngIf="f.password.errors?.['minlength']">Senha deve ter no mínimo 6 caracteres</span>
+            </div>
+          </div>
+  
+        <button type="submit" class="btn-login">Entrar</button>
+  
+        <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+      </form>
+    </div>
+  </div>
+  
